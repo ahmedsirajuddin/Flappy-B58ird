@@ -1,0 +1,121 @@
+CSCB58 Project Report:
+
+Team Member A
+-------------
+First Name: Alexander
+Last Name: Ursu
+Student Number: 1004357199
+UofT E-mail Address: alexander.ursu@mail.utoronto.ca
+
+Team Member B
+-------------
+First Name: Ahmed
+Last Name: Sirajuddin
+Student Number: 999963605
+UofT E-mail Address: ahmed.sirajuddin@mail.utoronto.ca
+
+Team Member C (Optional)
+-------------
+First Name: Gabrian
+Last Name: Mak
+Student Number: 1003591400
+UofT E-mail Address: gabrian.mak@mail.utoronto.ca
+
+Team Member D (Optional)
+-------------
+First Name: Kelson
+Last Name: Xie
+Student Number: 1004290037
+UofT E-mail Address: kelson.xie@mail.utoronto.ca
+
+
+Project Plan
+-------------
+
+Project Title: Flappy B58ird
+
+Provide a one paragraph description of your project:
+The project is a recreation of the famous mobile game Flappy Bird. It is titled
+Flappy B58ird (The 8 seen as a B) because we are recreating it in CSCB58.
+Connected to the FPGA will be a keyboard and monitor. The space bar on the
+keyboard will propel the bird upwards, while the bird falls on its own. The
+goal is to make your way through oncoming obstacles, in which there will be a
+gap for the bird to fly through. A VGA connection is used to display the bird
+and obstacles on the monitor. A score is shown representing the amount of
+obstacles the bird has flown through. Main menu to start game, end game screen
+displays final score and takes player back to main menu.
+
+What is your plan for the first week?
+Necessary aspects of the game implemented with FSM model. Drawing components on
+screen with VGA, oncoming obstacles represented by large shift registers and
+controlled by timer, bird jumping in place with keyboard.
+
+What is your plan for the second week?
+Continuing on same FSM model, determine when the bird has collided with an
+obstacle, keep track of score.
+
+What is your plan for the third week?
+On a higher-level FSM (or possibly within same FSM), have player navigate from
+main menu to playing the game, displaying their score on end game screen once
+the game is over, and returning them back to the main menu.
+
+What is your backup plan if things don’t work out as planned?
+Spend more time on basic gameplay aspects, just getting the bird the fly up and
+fall down, have obstacles approach the bird. Game may just start instantly when
+loaded up, game may just stop once the bird hits an obstacle.
+
+
+Weekly Reports
+-------------
+
+Week 1:
+We managed to work with a 40-bit wide shift-register and continuously draw its
+contents with the VGA, following our FSM. We ran short on time but wanted to
+instantiate many more of these registers and manage them all at once,
+essentially completing the obstacle portion of the game. This was left for
+later as we already have planned out how to easily scale up our current model.
+We created modules for a timer which can be used to regulate frame-rate and
+obstacle frequency, and a 30-bit wide shift register to represent the bird,
+modelled with another FSM. These pieces are to be incorporated in the next lab.
+
+Week 2:
+Able to instantiate 30 of our 40-bit shift registers, but have trouble drawing
+every bit to the screen in the proper position. Work done on the bird module,
+but ran into difficulties with other sub-modules like the rate divider. Will
+try to come to extra lab hours to catch up.
+
+Week 3:
+All members went to extra lab hours, but our main issues were still unresolved
+after much effort. During our actual lab time we are finally able to draw pipes
+to the screen correctly and have control over the thickness, speed, space
+between them, and pattern. Main issue preventing us from doing so before was
+discovered to be a behaviour of Verilog we didn't know about. Work also done on
+the Bird module, but some issues arise with its current design. We have an idea
+on a quick re-work of the module so we can at least put it together with our
+pipes. We also have looked at a previous project to see how to use keyboard
+controls, and believe we can incorporate that quickly as well. Hopefully able
+to do some sort of collision detection.
+
+Week 4:
+Implemented the bird's movement straight into the main module using a very
+basic design that already fit into our existing FSM. Able to draw the bird on
+screen with the pipes and control it's movement up and down. Able to detect
+collision between the bird and a pipe, and are able to restart the game after
+doing so. Score feature implemented more so as a "time spent" counter rather
+than pipes passed. Bird is able to fall faster than it rises, however the game
+still plays if the bird is on the ground, and upwards movement is continuous
+while the appropriate signal stays on (more like a glide upwards, rather than
+constant flapping and requiring the signal to be reset). Video demonstrating
+the project was recorded.
+
+References
+-------------
+Source: https://github.com/julesyan/CSCB58-Final-Project/blob/master/project.v
+Simple clock module used from above source to regulate frame rate.
+
+Hex display module used from lab 2.
+
+
+Repo & Video
+-------------
+Repo: https://github.com/ahmedsirajuddin/Flappy-B58ird
